@@ -1,8 +1,7 @@
 package com.training.domain;
 
 /**
- * CancerCure is a specific type of Project and extends the abstract class
- * Project.
+ * CancerCure is a specific type of Project and extends the Project class.
  * 
  * @author csoulakian
  *

@@ -151,12 +151,16 @@ public class Donor {
   }
 
   /**
-   * Print the details of the donor including the ID, name, amount donated,
+   * Get the details of the donor including the ID, name, amount donated,
    * selected project, and email address.
+   * 
+   * @return StringBuilder with all project dtails
    */
-  public void getDonorDetails() {
-    System.out.println(getDonorID() + "  " + getDonorName() + "  $" + getAmountDonated());
-    System.out.println(getSelectedProject() + " " + getEmail() + "\n");
+  public StringBuilder getDonorDetails() {
+    StringBuilder details = new StringBuilder();
+    details.append(getDonorID() + "  " + getDonorName() + "  $" + getAmountDonated());
+    details.append("\n" + getSelectedProject().getName() + "\n" + getEmail() + "\n");
+    return details;
   }
 
 }

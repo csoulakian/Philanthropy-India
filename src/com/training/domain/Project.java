@@ -3,14 +3,14 @@ package com.training.domain;
 import java.util.ArrayList;
 
 /**
- * An abstract class called Project contains all the functionality of any type
- * of project. Concrete classes that extend Project are CancerCure,
- * PrimaryEducation, and OldAgeHome.
+ * A class called Project contains all the functionality of any type of project.
+ * Concrete classes that extend Project are CancerCure, PrimaryEducation, and
+ * OldAgeHome.
  * 
  * @author csoulakian
  *
  */
-public abstract class Project {
+public class Project {
 
   /**
    * name of project
@@ -230,31 +230,24 @@ public abstract class Project {
   }
 
   /**
-   * Print the project details.
+   * Return the project details as a StringBuilder.
+   * 
+   * @return StringBuilder of project details
    */
-  public void printProjectDetails() {
-    System.out.println("Project: " + getName() + "\nDescription: " + getDescription() + "\nCost: $" + getCost());
-    System.out.println("Amount Collected: $" + getAmountCollected() + "\nPending Amount: $" + getPendingAmount());
-    System.out.println("Status: " + getStatus() + "\nImages: ");
+  public StringBuilder getProjectDetails() {
+    StringBuilder details = new StringBuilder();
+    details.append("Project: " + getName() + "\nDescription: " + getDescription() + "\nCost: $" + getCost());
+    details.append("  Amount Collected: $" + getAmountCollected() + "\nPending Amount: $" + getPendingAmount());
+    details.append("  Status: " + getStatus() + "\nImages: ");
     if (getImages().length > 0) {
       for (String image : getImages()) {
-        System.out.println(image);
+        details.append(image + "\n");
       }
     } else {
-      System.out.println("none");
+      details.append("none");
     }
-    System.out.println();
-  }
-
-  /**
-   * Print the list of donors for a project
-   */
-  public void printProjectDonors() {
-    System.out.println("\nList of Donors for Project " + name);
-    System.out.println("-----------------");
-    for (Donor donor : getListOfDonors()) {
-      donor.getDonorDetails();
-    }
+    details.append("\n");
+    return details;
   }
 
 }

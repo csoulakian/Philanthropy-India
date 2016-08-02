@@ -1,6 +1,7 @@
 package com.training.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A web portal that contains all the functionality needed to interact with
@@ -24,121 +25,43 @@ public class WebPortal {
   }
 
   /**
-   * Gets a list of all the projects.
+   * Gets a list of available the projects.
    * 
-   * @return array list of projects
+   * @return array list of available projects
    */
-  public ArrayList<Project> getListOfProjects() {
-    return listOfProjects;
-  }
-
-  /**
-   * Create an empty CancerCure project and add it to the list of projects.
-   * 
-   * @return CancerCure project that was created
-   */
-  public Project createCancerCureProject() {
-    Project project = new CancerCure();
-    listOfProjects.add(project);
-    return project;
-  }
-
-  /**
-   * Create a new CancerCure project and specify the name, description, and cost
-   * of project.
-   * 
-   * @param name
-   *          of project
-   * @param description
-   *          of project
-   * @param cost
-   *          of project
-   * @return CancerCure project that was created
-   */
-  public Project createCancerCureProject(String name, String description, double cost) {
-    Project project = new CancerCure(name, description, cost);
-    listOfProjects.add(project);
-    return project;
-  }
-
-  /**
-   * Create an empty PrimaryEducation project and add it to the list of
-   * projects.
-   * 
-   * @return PrimaryEducation project that was created
-   */
-  public Project createPrimaryEdProject() {
-    Project project = new CancerCure();
-    listOfProjects.add(project);
-    return project;
-  }
-
-  /**
-   * Create a new PrimaryEducation project and specify the name, description,
-   * and cost of project.
-   * 
-   * @param name
-   *          of project
-   * @param description
-   *          of project
-   * @param cost
-   *          of project
-   * @return PrimaryEducation project that was created
-   */
-  public Project createPrimaryEdProject(String name, String description, double cost) {
-    Project project = new CancerCure(name, description, cost);
-    listOfProjects.add(project);
-    return project;
-  }
-
-  /**
-   * Create an empty OldAgeHome project and add it to the list of projects.
-   * 
-   * @return OldAgeHome project that was created
-   */
-  public Project createOldAgeHomeProject() {
-    Project project = new CancerCure();
-    listOfProjects.add(project);
-    return project;
-  }
-
-  /**
-   * Create a new OldAgeHome project and specify the name, description, and cost
-   * of project.
-   * 
-   * @param name
-   *          of project
-   * @param description
-   *          of project
-   * @param cost
-   *          of project
-   * @return OldAgeHome project that was created
-   */
-  public Project createOldAgeHomeProject(String name, String description, double cost) {
-    Project project = new CancerCure(name, description, cost);
-    listOfProjects.add(project);
-    return project;
-  }
-
-  /**
-   * List all the available projects (projects that are not funded) and print
-   * the details of those projects.
-   */
-  public void listAvailableProjects() {
-    for (Project project : getListOfProjects()) {
+  public ArrayList<Project> getListOfAvailableProjects() {
+    ArrayList<Project> availableProjects = new ArrayList<Project>();
+    for (Project project : listOfProjects) {
       if (project.getStatus().equals("not funded")) {
-        project.printProjectDetails();
+        availableProjects.add(project);
       }
     }
+    return availableProjects;
+  }
+
+  /**
+   * Add a particular project to the list of projects in the web portal.
+   * 
+   * @param project
+   *          to be added
+   * @return that was added
+   */
+  public Project createProject(Project project) {
+    listOfProjects.add(project);
+    return project;
   }
 
   /**
    * List all the donors organized by project.
+   * 
+   * @return list of array lists of donors
    */
-  public void listDonorsByProject() {
-    for (Project project : getListOfProjects()) {
-      project.printProjectDonors();
+  public List<ArrayList<Donor>> listDonorsByProject() {
+    List<ArrayList<Donor>> allDonorsList = new ArrayList<ArrayList<Donor>>();
+    for (Project project : listOfProjects) {
+      allDonorsList.add(listDonors(project));
     }
+    return allDonorsList;
   }
 
   /**
@@ -146,9 +69,10 @@ public class WebPortal {
    * 
    * @param project
    *          to list all the donors
+   * @return arraylist of donors for a particular project
    */
-  public void listDonors(Project project) {
-    project.printProjectDonors();
+  public ArrayList<Donor> listDonors(Project project) {
+    return project.listOfDonors;
   }
 
 }
