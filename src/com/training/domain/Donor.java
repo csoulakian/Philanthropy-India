@@ -159,7 +159,7 @@ public class Donor {
   public StringBuilder getDonorDetails() {
     StringBuilder details = new StringBuilder();
     details.append(getDonorID() + "  " + getDonorName() + "  $" + getAmountDonated());
-    details.append("\n" + getSelectedProject().getName() + "\n" + getEmail() + "\n");
+    details.append("\nProject: " + getSelectedProject().getName() + "\n" + getEmail() + "\n");
     return details;
   }
 
