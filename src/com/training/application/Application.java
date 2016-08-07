@@ -16,6 +16,7 @@ public class Application {
 
     WebPortal webPortal = new WebPortal();
     Project project1 = new CancerCure();
+    project1.setProjectID(101);
     project1.setName("Breast Cancer Cure");
     project1.setDescription("Help us cure cancer!");
     project1.setCost(100000.00);
@@ -27,9 +28,9 @@ public class Application {
     System.out.println(project1.getProjectDetails());
 
     System.out.println("*****Create 2 more projects*****");
-    Project project2 = new PrimaryEducation("Local Primary Education Fund", "Help us fund primary education!", 75000);
+    Project project2 = new PrimaryEducation(102, "Local Primary Education Fund", "Help us fund primary education!", 75000);
     webPortal.createProject(project2);
-    Project project3 = new OldAgeHome("Senior Living Home", "Help us fund old age homes!", 50000);
+    Project project3 = new OldAgeHome(103, "Senior Living Home", "Help us fund old age homes!", 50000);
     webPortal.createProject(project3);
 
     System.out.println("*****3 donors donate*****");

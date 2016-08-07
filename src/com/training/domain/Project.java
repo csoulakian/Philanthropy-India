@@ -13,6 +13,10 @@ import java.util.ArrayList;
 public class Project {
 
   /**
+   * ID of the project
+   */
+  public int projectID;
+  /**
    * name of project
    */
   public String name;
@@ -64,13 +68,34 @@ public class Project {
    * @param cost
    *          total cost of project
    */
-  public Project(String name, String description, double cost) {
+  public Project(int projectID, String name, String description, double cost) {
     super();
+    this.projectID = projectID;
     this.name = name;
     this.description = description;
     this.cost = cost;
     setAmountCollected(0);
     calcStatus();
+  }
+
+  
+  
+  /**
+   * Get the projectID.
+   * 
+   * @return the projectID
+   */
+  public int getProjectID() {
+    return projectID;
+  }
+
+  /**
+   * Set the projectID.
+   * 
+   * @param projectID the projectID to set
+   */
+  public void setProjectID(int projectID) {
+    this.projectID = projectID;
   }
 
   /**
@@ -236,7 +261,7 @@ public class Project {
    */
   public StringBuilder getProjectDetails() {
     StringBuilder details = new StringBuilder();
-    details.append("Project: " + getName() + "\nDescription: " + getDescription() + "\nCost: $" + getCost());
+    details.append("Project: " + getProjectID() + " " + getName() + "\nDescription: " + getDescription() + "\nCost: $" + getCost());
     details.append("  Amount Collected: $" + getAmountCollected() + "\nPending Amount: $" + getPendingAmount());
     details.append("  Status: " + getStatus() + "\nImages: ");
     if (getImages().length > 0) {

@@ -154,7 +154,7 @@ public class Donor {
    * Get the details of the donor including the ID, name, amount donated,
    * selected project, and email address.
    * 
-   * @return StringBuilder with all project dtails
+   * @return StringBuilder with all project details
    */
   public StringBuilder getDonorDetails() {
     StringBuilder details = new StringBuilder();

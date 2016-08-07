@@ -18,6 +18,8 @@ public class PrimaryEducation extends Project {
   /**
    * Constructor taking in the parameters required to make a project.
    * 
+   * @param projectID
+   *          ID of project
    * @param name
    *          of project
    * @param description
@@ -25,8 +27,8 @@ public class PrimaryEducation extends Project {
    * @param cost
    *          of project
    */
-  public PrimaryEducation(String name, String description, double cost) {
-    super(name, description, cost);
+  public PrimaryEducation(int projectID, String name, String description, double cost) {
+    super(projectID, name, description, cost);
   }
 
 }
