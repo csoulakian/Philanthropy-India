@@ -29,9 +29,9 @@ public class Project {
    */
   public String status;
   /**
-   * array of image URLs
+   * ArrayList of images
    */
-  public String[] images = new String[0];
+  public ArrayList<Image> images = new ArrayList<Image>();
   /**
    * cost of project
    */
@@ -160,21 +160,21 @@ public class Project {
   }
 
   /**
-   * Get the string array of image URLs.
+   * Get the ArrayList of images.
    * 
-   * @return string array of images
+   * @return ArrayList of type image
    */
-  public String[] getImages() {
+  public ArrayList<Image> getImages() {
     return images;
   }
 
   /**
-   * Set the string array of images.
+   * Set the ArrayList of images
    * 
    * @param images
-   *          array of image URLs
+   *          ArrayList of images
    */
-  public void setImages(String[] images) {
+  public void setImages(ArrayList<Image> images) {
     this.images = images;
   }
 
@@ -264,9 +264,9 @@ public class Project {
     details.append("Project: " + getProjectID() + " " + getName() + "\nDescription: " + getDescription() + "\nCost: $" + getCost());
     details.append("  Amount Collected: $" + getAmountCollected() + "\nPending Amount: $" + getPendingAmount());
     details.append("  Status: " + getStatus() + "\nImages: ");
-    if (getImages().length > 0) {
-      for (String image : getImages()) {
-        details.append(image + "\n");
+    if (getImages().size() > 0) {
+      for (Image image : getImages()) {
+        details.append(image.getImageURL() + "\n");
       }
     } else {
       details.append("none");

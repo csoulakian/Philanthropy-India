@@ -3,12 +3,7 @@ package com.training.application;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.training.domain.CancerCure;
-import com.training.domain.Donor;
-import com.training.domain.OldAgeHome;
-import com.training.domain.PrimaryEducation;
-import com.training.domain.Project;
-import com.training.domain.WebPortal;
+import com.training.domain.*;
 
 public class Application {
 
@@ -20,8 +15,12 @@ public class Application {
     project1.setName("Breast Cancer Cure");
     project1.setDescription("Help us cure cancer!");
     project1.setCost(100000.00);
-    String[] images = { "www.google.com/image1", "www.google.com/image2" };
-    project1.setImages(images);
+    Image img1 = new Image("www.google.com/image1");
+    Image img2 = new Image("www.google.com/image2");
+    ArrayList<Image> imagesList = new ArrayList<>();
+    imagesList.add(img1);
+    imagesList.add(img2);
+    project1.setImages(imagesList);
     webPortal.createProject(project1);
 
     System.out.println("*****Project 1 Description*****");
