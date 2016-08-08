@@ -135,6 +135,15 @@ public class Project {
   public void setDescription(String description) {
     this.description = description;
   }
+  
+  /**
+   * Set the status of the project.
+   * 
+   * @param status the status to set
+   */
+  public void setStatus(String status) {
+    this.status = status;
+  }
 
   /**
    * Get the status of project - "funded" or "not funded"
@@ -144,6 +153,8 @@ public class Project {
   public String getStatus() {
     return status;
   }
+  
+
 
   /**
    * Calculate the status of the project. If the pending amount is 0 and the
@@ -217,6 +228,15 @@ public class Project {
     calcStatus();
   }
 
+  /**
+   * Set the pending amount.
+   * 
+   * @param pendingAmount the pendingAmount to set
+   */
+  public void setPendingAmount(double pendingAmount) {
+    this.pendingAmount = pendingAmount;
+  }
+  
   /**
    * Get the pending amount, the amount waiting to be collected.
    * 

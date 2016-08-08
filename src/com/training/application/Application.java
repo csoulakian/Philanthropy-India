@@ -3,18 +3,22 @@ package com.training.application;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.training.DAOs.*;
 import com.training.domain.*;
 import com.training.entities.Donor;
 import com.training.entities.Image;
 import com.training.entities.Project;
+import com.training.utils.MySQLConnection;
 
 public class Application {
 
   public static void main(String[] args) {
 
+    System.out.println(MySQLConnection.getMyOracleConnection() + "\n");
+    
     WebPortal webPortal = new WebPortal();
     Project project1 = new CancerCure();
-    project1.setProjectID(101);
+    project1.setProjectID(201);
     project1.setName("Breast Cancer Cure");
     project1.setDescription("Help us cure cancer!");
     project1.setCost(100000.00);
@@ -24,9 +28,13 @@ public class Application {
     imagesList.add(img1);
     imagesList.add(img2);
     project1.setImages(imagesList);
-    webPortal.createProject(project1);
+    
+    ProjectDAO projectDAO = new ProjectDAO();
+    ArrayList<Project> listOfProjects = projectDAO.findAll();
+    printAllProjectDetails(listOfProjects);
+    //webPortal.createProject(project1);
 
-    System.out.println("*****Project 1 Description*****");
+/*    System.out.println("*****Project 1 Description*****");
     System.out.println(project1.getProjectDetails());
 
     System.out.println("*****Create 2 more projects*****");
@@ -53,7 +61,7 @@ public class Application {
     printAllProjectDonors(webPortal.listDonorsByProject());
 
     System.out.println("*****Print donors for Project 3*****");
-    printProjectDonorsForProject(webPortal.listDonors(project3));
+    printProjectDonorsForProject(webPortal.listDonors(project3));*/
 
   }
 
