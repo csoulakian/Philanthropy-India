@@ -1,4 +1,4 @@
-package com.training.domain;
+package com.training.entities;
 
 public class Donor {
 

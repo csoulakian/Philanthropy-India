@@ -1,5 +1,7 @@
 package com.training.domain;
 
+import com.training.entities.Project;
+
 /**
  * OldAgeHome is a specific type of Project and extends the Project class.
  * 

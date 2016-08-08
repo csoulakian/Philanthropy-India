@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.training.domain;
+package com.training.entities;
 
 /**
  * Each project has an ArrayList of images.

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.training.domain.*;
+import com.training.entities.Donor;
+import com.training.entities.Image;
+import com.training.entities.Project;
 
 public class Application {
 

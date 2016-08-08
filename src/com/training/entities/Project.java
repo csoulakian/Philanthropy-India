@@ -1,4 +1,4 @@
-package com.training.domain;
+package com.training.entities;
 
 import java.util.ArrayList;
 

@@ -3,6 +3,9 @@ package com.training.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.training.entities.Donor;
+import com.training.entities.Project;
+
 /**
  * A web portal that contains all the functionality needed to interact with
  * projects.
