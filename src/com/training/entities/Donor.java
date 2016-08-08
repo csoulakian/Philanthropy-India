@@ -50,8 +50,7 @@ public class Donor {
     this.donorName = donorName;
     this.email = email;
     this.selectedProject = selectedProject;
-    donate(amountDonated);
-    selectedProject.addDonor(this);
+    setAmountDonated(amountDonated);
   }
 
   /**
@@ -145,9 +144,8 @@ public class Donor {
    * 
    * @param amountToDonate
    */
-  public void donate(double amountToDonate) {
-    selectedProject.setAmountCollected(selectedProject.getAmountCollected() + amountToDonate);
-    amountDonated += amountToDonate;
+  public void setAmountDonated(double amountToDonate) {
+    this.amountDonated = amountToDonate;
   }
 
   /**
@@ -159,7 +157,7 @@ public class Donor {
   public StringBuilder getDonorDetails() {
     StringBuilder details = new StringBuilder();
     details.append(getDonorID() + "  " + getDonorName() + "  $" + getAmountDonated());
-    details.append("\nProject: " + getSelectedProject().getName() + "\n" + getEmail() + "\n");
+    details.append("\nProject: " + "\n" + getEmail() + "\n");
     return details;
   }
 

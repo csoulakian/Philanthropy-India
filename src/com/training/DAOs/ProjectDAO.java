@@ -29,7 +29,7 @@ public class ProjectDAO implements IDAO<Project> {
   /**
    * Constructor that uses connection parameter.
    * 
-   * @param con
+   * @param con connection
    */
   public ProjectDAO(Connection con) {
     super();

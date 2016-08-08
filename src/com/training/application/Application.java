@@ -29,10 +29,16 @@ public class Application {
     imagesList.add(img2);
     project1.setImages(imagesList);
     
-    ProjectDAO projectDAO = new ProjectDAO();
-    ArrayList<Project> listOfProjects = projectDAO.findAll();
-    printAllProjectDetails(listOfProjects);
-    //webPortal.createProject(project1);
+    //ProjectDAO projectDAO = new ProjectDAO();
+    //projectDAO.add(project1);
+    
+    DonorDAO donorDAO = new DonorDAO();
+    
+    Donor donor1 = new Donor(504, "Chrissy", "Chrissy@abc.com", project1, 10000);
+    //int result = donorDAO.add(donor1);
+    //int result = donorDAO.delete(504);
+    ArrayList<Donor> allDonors = donorDAO.findAll();
+    printAllProjectDonors(allDonors);
 
 /*    System.out.println("*****Project 1 Description*****");
     System.out.println(project1.getProjectDetails());
@@ -65,9 +71,9 @@ public class Application {
 
   }
 
-  /**
+/*  *//**
    * Print the list of donors for a project
-   */
+   *//*
   public static void printProjectDonorsForProject(ArrayList<Donor> listOfDonors) {
     if (listOfDonors.size() > 0) {
       System.out.println("\nList of Donors for Project " + listOfDonors.get(0).getSelectedProject().getName());
@@ -80,17 +86,17 @@ public class Application {
       System.out.println("-----------------");
     }
 
-  }
+  }*/
 
   /**
-   * Print the list of all donors organized by project
+   * Print the list of all donors.
    * 
    * @param listOfAllDonors
-   *          all donors separated in arraylists by project
+   *          all donors in arraylist
    */
-  public static void printAllProjectDonors(List<ArrayList<Donor>> listOfAllDonors) {
-    for (ArrayList<Donor> list : listOfAllDonors) {
-      printProjectDonorsForProject(list);
+  public static void printAllProjectDonors(ArrayList<Donor> listOfAllDonors) {
+    for (Donor donor : listOfAllDonors) {
+      System.out.println(donor.getDonorDetails());
     }
   }
 
