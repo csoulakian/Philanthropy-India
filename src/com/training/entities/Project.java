@@ -263,7 +263,7 @@ public class Project {
     details.append("Project: " + getProjectID() + " " + getName() + "\nDescription: " + getDescription() + "\nCost: $" + getCost());
     details.append("  Amount Collected: $" + getAmountCollected() + "\nPending Amount: $" + getPendingAmount());
     details.append("  Status: " + getStatus() + "\nImages: ");
-    if (getImages().getImage1().length() > 0) {
+    if(getImages().getImage1().length() > 0) {
       details.append(getImages().getImage1() + "\n");
       details.append(getImages().getImage2() + "\n");
       details.append(getImages().getImage3() + "\n");
@@ -271,6 +271,13 @@ public class Project {
       details.append("none");
     }
     details.append("\n");
+    
+    details.append("***Donors***");
+    if(getListOfDonors().size() > 0) {
+      for(Donor donor : getListOfDonors()) {
+        System.out.println(donor.getDonorDetails());
+      }
+    }
     return details;
   }
 

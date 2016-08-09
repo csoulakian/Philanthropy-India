@@ -1,7 +1,6 @@
 package com.training.DAOs;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 import com.training.entities.Images;
 import com.training.entities.Project;
@@ -77,7 +76,7 @@ public class ImageDAO {
     return images;
   }
 
-  public int delete(int projectID) {
+  public int deleteImages(int projectID) {
     int result;
     
     try {
@@ -93,10 +92,6 @@ public class ImageDAO {
       result = 0;
     }
     return result;
-  }
-
-  public ArrayList<Images> findAll() {
-    return null;
   }
 
 }

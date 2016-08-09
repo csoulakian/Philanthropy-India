@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.training.DAOs.DonorDAO;
 import com.training.entities.Donor;
+import com.training.entities.Project;
 
 public class DonorService {
 
@@ -57,6 +58,17 @@ public class DonorService {
         donor.setSelectedProject(projectService.getProject(donor.getSelectedProject().getProjectID()));
       }
       return listOfDonors;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
+    return null;
+  }
+  
+  public ArrayList<Donor> getDonorsForProject(Project project) {
+    
+    try {
+      return donorDAO.findDonorsForProject(project);
     } catch (Exception e) {
       e.printStackTrace();
     }

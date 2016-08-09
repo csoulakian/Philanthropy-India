@@ -2,16 +2,21 @@ package com.training.services;
 
 import java.util.ArrayList;
 
+import com.training.DAOs.ImageDAO;
 import com.training.DAOs.ProjectDAO;
 import com.training.entities.Project;
 
 public class ProjectService {
 
   private ProjectDAO projectDAO = new ProjectDAO();
+  private ImageDAO imageDAO = new ImageDAO();
   
   public int addProject(Project project) {
     
     try {
+      if (project.getImages().getImage1().length() > 0) {
+        imageDAO.addImages(project.getProjectID(), project.getImages());
+      }
       return projectDAO.add(project);
     } catch (Exception e) {
       e.printStackTrace();

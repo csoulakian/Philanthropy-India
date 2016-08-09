@@ -123,9 +123,39 @@ public class DonorDAO implements IDAO<Donor> {
         donorNoProject.setEmail(rs.getString("donorEmail"));
         project.setProjectID(rs.getInt("selectedProjectID"));
         donorNoProject.setSelectedProject(project);
-        donorNoProject.setAmountDonated(rs.getDouble("amountdonated"));
+        donorNoProject.setAmountDonated(rs.getDouble("amountDonated"));
 
         allDonors.add(donorNoProject);
+      }
+
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+
+    return allDonors;
+  }
+  
+
+  public ArrayList<Donor> findDonorsForProject(Project project) {
+    
+    ArrayList<Donor> allDonors = new ArrayList<Donor>();
+
+    try {
+
+      Statement stmt = con.createStatement();
+
+      ResultSet rs = stmt.executeQuery("SELECT * FROM donor WHERE projectID = " + project.getProjectID());
+
+      while (rs.next()) {
+        Donor donor = new Donor();
+
+        donor.setDonorID(rs.getInt("donorID"));
+        donor.setDonorName(rs.getString("donorName"));
+        donor.setEmail(rs.getString("donorEmail"));
+        donor.setSelectedProject(project);
+        donor.setAmountDonated(rs.getDouble("amountDonated"));
+
+        allDonors.add(donor);
       }
 
     } catch (SQLException e) {
