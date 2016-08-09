@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.training.entities.Donor;
+import com.training.entities.Project;
 import com.training.ifaces.IDAO;
 import com.training.utils.MySQLConnection;
 
@@ -60,6 +61,7 @@ public class DonorDAO implements IDAO<Donor> {
   @Override
   public Donor find(int donorID) {
     Donor donorNoProject = new Donor();
+    Project project = new Project();
 
     try {
 
@@ -71,10 +73,10 @@ public class DonorDAO implements IDAO<Donor> {
         donorNoProject.setDonorID(rs.getInt("donorID"));
         donorNoProject.setDonorName(rs.getString("donorName"));
         donorNoProject.setEmail(rs.getString("donorEmail"));
+        project.setProjectID(rs.getInt("selectedProjectID"));
+        donorNoProject.setSelectedProject(project);
         donorNoProject.setAmountDonated(rs.getDouble("amountdonated"));
       }
-
-      con.close();
 
     } catch (SQLException e) {
       e.printStackTrace();
@@ -115,22 +117,37 @@ public class DonorDAO implements IDAO<Donor> {
 
       while (rs.next()) {
         Donor donorNoProject = new Donor();
+        Project project = new Project();
 
         donorNoProject.setDonorID(rs.getInt("donorID"));
         donorNoProject.setDonorName(rs.getString("donorName"));
         donorNoProject.setEmail(rs.getString("donorEmail"));
+        project.setProjectID(rs.getInt("selectedProjectID"));
+        donorNoProject.setSelectedProject(project);
         donorNoProject.setAmountDonated(rs.getDouble("amountdonated"));
 
         allDonors.add(donorNoProject);
       }
-
-      con.close();
 
     } catch (SQLException e) {
       e.printStackTrace();
     }
 
     return allDonors;
+  }
+  
+  public void updateAmountDonated(int donorID, double newDonationTotal) {
+    
+    try {
+      
+      Statement s = (Statement) con.createStatement();
+      
+      s.executeUpdate("UPDATE donor SET amountDonated = " + newDonationTotal + "WHERE donorID = " + donorID);
+      
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    
   }
 
 }

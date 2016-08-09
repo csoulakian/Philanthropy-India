@@ -39,7 +39,7 @@ public class Project {
   /**
    * amount collected in donations for a project
    */
-  public double amountCollected;
+  public double amountCollected = 0;
   /**
    * amount left to be collected
    */
@@ -54,8 +54,6 @@ public class Project {
    */
   public Project() {
     super();
-    setAmountCollected(0);
-    calcStatus();
   }
 
   /**
@@ -74,8 +72,6 @@ public class Project {
     this.name = name;
     this.description = description;
     this.cost = cost;
-    setAmountCollected(0);
-    calcStatus();
   }
 
   
@@ -147,27 +143,20 @@ public class Project {
 
   /**
    * Get the status of project - "funded" or "not funded"
+   * If the pending amount is 0 and the
+   * cost of the project has already been set (ensuring an accurate pending
+   * amount), set the status to "funded". Otherwise, the project is
+   * "not funded."
    * 
    * @return status of project
    */
   public String getStatus() {
-    return status;
-  }
-  
-
-
-  /**
-   * Calculate the status of the project. If the pending amount is 0 and the
-   * cost of the project has already been set (ensuring an accurate pending
-   * amount), set the status to "funded". Otherwise, the project is
-   * "not funded."
-   */
-  public void calcStatus() {
-    if (getPendingAmount() == 0 && cost > 0) {
+    if (getPendingAmount() <= 0 && cost > 0) {
       status = "funded";
     } else {
       status = "not funded";
     }
+    return status;
   }
 
   /**
@@ -225,7 +214,6 @@ public class Project {
    */
   public void setAmountCollected(double amountCollected) {
     this.amountCollected = amountCollected;
-    calcStatus();
   }
 
   /**
@@ -243,16 +231,8 @@ public class Project {
    * @return pending amount
    */
   public double getPendingAmount() {
-    calcPendingAmount();
-    return pendingAmount;
-  }
-
-  /**
-   * Calculate the pending amount, which is the cost minus the total amount
-   * collected for a project.
-   */
-  public void calcPendingAmount() {
     pendingAmount = cost - amountCollected;
+    return pendingAmount;
   }
 
   /**

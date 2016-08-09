@@ -120,14 +120,13 @@ public class Donor {
   }
 
   /**
-   * Set the selected project and add donor to that project's donor list.
+   * Set the selected project.
    * 
    * @param selectedProject
    *          project donor wants to donate to
    */
   public void setSelectedProject(Project selectedProject) {
     this.selectedProject = selectedProject;
-    selectedProject.addDonor(this);
   }
 
   /**
@@ -157,7 +156,7 @@ public class Donor {
   public StringBuilder getDonorDetails() {
     StringBuilder details = new StringBuilder();
     details.append(getDonorID() + "  " + getDonorName() + "  $" + getAmountDonated());
-    details.append("\nProject: " + "\n" + getEmail() + "\n");
+    details.append("\nProject: " + getSelectedProject().getName() + "\n" + getEmail() + "\n");
     return details;
   }
 

@@ -82,8 +82,6 @@ public class ProjectDAO implements IDAO<Project> {
         project.setAmountCollected(rs.getDouble("amountCollected"));
         project.setPendingAmount(rs.getDouble("pendingAmount"));
       }
-
-      con.close();
       
       
     } catch (SQLException e) {
@@ -142,6 +140,46 @@ public class ProjectDAO implements IDAO<Project> {
     }
     
     return allProjects;
+  }
+  
+  public void updateAmountCollected(int projectID, double newAmountCollected) {
+    
+    try {
+      
+      Statement s = (Statement) con.createStatement();
+      
+      s.executeUpdate("UPDATE project SET amountCollected = " + newAmountCollected + "WHERE projectID = " + projectID);
+      
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+  
+  public void updatePendingAmount(int projectID, double newPendingAmount) {
+    
+    try {
+      
+      Statement s = (Statement) con.createStatement();
+      
+      s.executeUpdate("UPDATE project SET pendingAmount = " + newPendingAmount + "WHERE projectID = " + projectID);
+      
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+  }
+  
+  public void updateStatus(int projectID, String newStatus) {
+    
+    try {
+      
+      Statement s = (Statement) con.createStatement();
+      
+      s.executeUpdate("UPDATE project SET projectStatus = '" + newStatus + "' WHERE projectID = " + projectID);
+      
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    
   }
 
 }

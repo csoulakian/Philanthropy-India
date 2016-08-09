@@ -8,6 +8,8 @@ import com.training.domain.*;
 import com.training.entities.Donor;
 import com.training.entities.Image;
 import com.training.entities.Project;
+import com.training.services.DonorService;
+import com.training.services.ProjectService;
 import com.training.utils.MySQLConnection;
 
 public class Application {
@@ -29,16 +31,12 @@ public class Application {
     imagesList.add(img2);
     project1.setImages(imagesList);
     
-    //ProjectDAO projectDAO = new ProjectDAO();
-    //projectDAO.add(project1);
     
-    DonorDAO donorDAO = new DonorDAO();
+    DonorService donorService = new DonorService();
     
-    Donor donor1 = new Donor(504, "Chrissy", "Chrissy@abc.com", project1, 10000);
-    //int result = donorDAO.add(donor1);
-    //int result = donorDAO.delete(504);
-    ArrayList<Donor> allDonors = donorDAO.findAll();
-    printAllProjectDonors(allDonors);
+    Donor d1 = new Donor(501, "Ramesh", "man@abc.com", project1, 50);
+    donorService.donate(d1, 700000);
+    
 
 /*    System.out.println("*****Project 1 Description*****");
     System.out.println(project1.getProjectDetails());
