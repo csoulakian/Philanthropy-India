@@ -1,15 +1,10 @@
 package com.training.application;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import com.training.DAOs.*;
 import com.training.domain.*;
-import com.training.entities.Donor;
-import com.training.entities.Image;
-import com.training.entities.Project;
-import com.training.services.DonorService;
-import com.training.services.ProjectService;
+import com.training.entities.*;
+import com.training.services.*;
 import com.training.utils.MySQLConnection;
 
 public class Application {
@@ -18,18 +13,14 @@ public class Application {
 
     System.out.println(MySQLConnection.getMyOracleConnection() + "\n");
     
-    WebPortal webPortal = new WebPortal();
+    //WebPortal webPortal = new WebPortal();
     Project project1 = new CancerCure();
     project1.setProjectID(201);
     project1.setName("Breast Cancer Cure");
     project1.setDescription("Help us cure cancer!");
     project1.setCost(100000.00);
-    Image img1 = new Image("www.google.com/image1");
-    Image img2 = new Image("www.google.com/image2");
-    ArrayList<Image> imagesList = new ArrayList<>();
-    imagesList.add(img1);
-    imagesList.add(img2);
-    project1.setImages(imagesList);
+    Images images = new Images("www.google.com/image1", "www.google.com/image2");
+    project1.setImages(images);
     
     
     DonorService donorService = new DonorService();

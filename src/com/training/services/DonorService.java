@@ -3,9 +3,7 @@ package com.training.services;
 import java.util.ArrayList;
 
 import com.training.DAOs.DonorDAO;
-import com.training.DAOs.ProjectDAO;
 import com.training.entities.Donor;
-import com.training.entities.Project;
 
 public class DonorService {
 

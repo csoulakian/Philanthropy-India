@@ -2,7 +2,6 @@ package com.training.DAOs;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.training.entities.Donor;
 import com.training.entities.Project;
