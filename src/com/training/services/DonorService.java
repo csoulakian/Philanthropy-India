@@ -90,5 +90,16 @@ public class DonorService {
     
   }
   
+  public boolean authenticateDonor(int donorID, String donorEmail) {
+    
+    try {
+      return donorDAO.authenticateDonor(donorID, donorEmail);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    
+    return false;
+  }
+  
   
 }

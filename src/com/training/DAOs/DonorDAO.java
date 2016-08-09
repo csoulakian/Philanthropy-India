@@ -178,5 +178,30 @@ public class DonorDAO implements IDAO<Donor> {
     }
     
   }
+  
+  public boolean authenticateDonor(int donorID, String donorEmail) {
+    
+    String actualEmail = null;
+    
+    try {
+
+      Statement stmt = con.createStatement();
+
+      ResultSet rs = stmt.executeQuery("select * from donor where donorID = " + donorID);
+
+      while (rs.next()) {
+        actualEmail = rs.getString("donorEmail");
+      }
+      
+      if(donorEmail.equals(actualEmail)) {
+        return true;
+      }
+      
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+   
+    return false;
+  }
 
 }

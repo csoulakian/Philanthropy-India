@@ -2,6 +2,7 @@ package com.training.application;
 
 import java.util.ArrayList;
 
+import com.training.DAOs.DonorDAO;
 import com.training.domain.*;
 import com.training.entities.*;
 import com.training.services.*;
@@ -27,6 +28,8 @@ public class Application {
     
     Donor d1 = new Donor(501, "Ramesh", "man@abc.com", project1, 50);
     donorService.donate(d1, 700000);
+    
+    System.out.println(donorService.authenticateDonor(501, "ram@abc.com"));
     
 
 /*    System.out.println("*****Project 1 Description*****");
